@@ -1,12 +1,12 @@
-const mongoose = require(mongoose);
+const mongoose = require('mongoose');
 require('dotenv').config();
 const uri = process.env.MONGODB_URI;
 
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(uri)
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
-const userScehma = mongoose.schema({
+const userScehma = mongoose.Schema({
   username: {
     type: String,
     required: true,
@@ -37,9 +37,9 @@ const userScehma = mongoose.schema({
 
 const User = mongoose.model("User", userScehma);
 
-const accountSchema = mongoose.schema({
+const accountSchema = mongoose.Schema({
   userId:{
-    type: mongoose.schema.Types.ObjectId, //Reference to User model
+    type: mongoose.Schema.Types.ObjectId, //Reference to User model
     ref: 'User',
     required: true
   },
@@ -51,7 +51,7 @@ const accountSchema = mongoose.schema({
 
 const Account = mongoose.model("Account", accountSchema);
 
-model.exports = {
+module.exports = {
   User,
 Account
 };

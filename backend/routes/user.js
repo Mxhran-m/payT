@@ -1,13 +1,13 @@
 const express = require("express");
-const zod = requier("zod");
+const zod = require("zod");
 const { User, Account } = require("../db");
 const jwt = require("jsonwebtoken");
 const JWT_SECRET = require("../config");
-const { authmiddleware } = require("../middleware")
+const { authMiddleware } = require("../middleware");
 const router = express.Router();
 
 const signupSchema = zod.object({
-    username: zod.sring().email(),
+    username: zod.string().email(),
     firstName: zod.string(),
     lastName: zod.string(),
     password: zod.string(),
@@ -93,12 +93,12 @@ router.post("/signin", async (req, res) =>{
 })
 
 const updateBody = zod.object({
-    password: zod.string().option(),
-    firstName: zod.string().option(),
-    lastName: zod.string().option()
+    password: zod.string().optional(),
+    firstName: zod.string().optional(),
+    lastName: zod.string().optional()
 })
 
-router.put("/",authmiddleware, async (req, res)=>{
+router.put("/",authMiddleware, async (req, res)=>{
     const { success } = updateBody.safeParse(req.body);
     if(!success){
         res.status(411).json({
