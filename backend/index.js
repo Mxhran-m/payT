@@ -9,5 +9,6 @@ app.use(cors());
 const mainRouter = require("./routes/index");
 
 
-app.use("api/v1", mainRouter);
+app.use("/api/v1", mainRouter);
+console.log("server is onn...")
 app.listen(3000);

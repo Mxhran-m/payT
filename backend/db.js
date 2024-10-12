@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const uri = process.env.MONGODB_URI;
 
-mongoose.connect(uri)
+//0.0.0.0/0
+mongoose.connect(uri, { serverSelectionTimeoutMS: 5000 })
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
@@ -13,8 +14,8 @@ const userScehma = mongoose.Schema({
     unique: true,
     trim: true,
     minLength: 3,
-    maxLength: 10,
-    lowercase: true,
+    maxLength: 30,
+    lowercase: true
   },
   password: {
     type: String,
