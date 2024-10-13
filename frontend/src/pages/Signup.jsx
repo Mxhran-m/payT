@@ -10,7 +10,7 @@ export const Signup = () => {
                 <div className="rounded-lg bg-white w-80 text-center p-2 w-max px-4">
                         <Heading label={"Sign Up"} />
                         <SubHeading label={"Enter your information to create account"}/>
-                        <InputBox label={"email"} placeholder={"example@gmail.com"}/>
+                        <InputBox label={"Email"} placeholder={"example@gmail.com"}/>
                         <InputBox label={"First Name"} placeholder={"Jon"}/>
                         <InputBox label={"Last Name"} placeholder={"Doe"}/>
                         <InputBox label={"Password"} placeholder={"Password"}/>
