@@ -5,11 +5,13 @@ import { Heading } from "../components/Heading"
 import { InputBox } from "../components/InputBox"
 import { SubHeading } from "../components/SubHeading"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 
 export const Signin = () => {
     const [username, setusername] = useState("")
-    cosnt [password, setpassword] = useState("")
+    const [password, setpassword] = useState("")
+    const navigate = useNavigate()
     return <div className="h-screen flex justify-center bg-slate-300">
         <div className="flex flex-col justify-center">
             <div className="bg-white w-80 rounded-lg text-center p-2 px-4 w-max">
@@ -24,8 +26,8 @@ export const Signin = () => {
                                 username,
                                 password
                             })
-                            localStorage.setItem("token", responst.data.token)
-                            navigator("/dashboard")
+                            localStorage.setItem("token", response.data.token)
+                            navigate("/dashboard")
                         }} label={"Sign In"} />
                 </div>
                 <BottomWarning label={"Don't have an account?"} to={"/Signup"} buttonText={"Sign up"}/>
