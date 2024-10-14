@@ -9,7 +9,7 @@ export const SendMoney = () => {
     const [amount, setAmount] = useState(0);
 
     return <div className="flex justify-center h-screen bg-grey-100">
-        <div classNameName="h-full flex flex-col justify-center">
+        <div className="h-full flex flex-col justify-center">
             <div
                 className="border h-min text-card-foreground max-w-md p-4 space-y-8 w-96 bg-white shadow-lg rounded-lg"
             >
@@ -18,7 +18,7 @@ export const SendMoney = () => {
                 </div>
                 <div className="p-6">
                     <div className="flex items-center space-x-4">
-                        <div className="w-12 h-12 rounded=full bg-green-500 flex items-center justify-center"><span className="text-2xl text-white">{name[0].toUpperCase}</span></div>
+                        <div className="w-12 h-12 rounded=full bg-green-500 flex items-center justify-center"><span className="text-2xl text-white">{name[0].toUpperCase()}</span></div>
                         <h3 className="text-2xl font-semibold">{name}</h3>
                     </div>
                     <div className="space-y-4">
@@ -27,7 +27,7 @@ export const SendMoney = () => {
                             <input onChange={(e) => { setAmount(e.target.value) }} type="number" className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm" id="amount" placeholder="Enter amount" />
                         </div>
                         <button onClick={() => {
-                            axios.post("http://localhost:3000/api/v1/balance/transfer", {
+                            axios.post("http://localhost:3000/api/v1/account/transfer", {
                                 to:id,
                                 amount
                             },{
